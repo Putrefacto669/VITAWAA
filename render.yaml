@@ -1,0 +1,18 @@
+# Blueprint de Render para el bridge de VitaWA.
+# Plan "starter" (el Free se duerme y no admite discos → se pierde la sesión de WhatsApp).
+services:
+  - type: web
+    name: vitawa-bridge
+    runtime: docker
+    rootDir: bridge
+    plan: starter
+    healthCheckPath: /health
+    envVars:
+      - key: DATA_DIR
+        value: /data
+      - key: ADMIN_TOKEN        # para abrir https://TU-APP.onrender.com/?k=ADMIN_TOKEN
+        generateValue: true
+    disk:
+      name: vitawa-data
+      mountPath: /data
+      sizeGB: 1
