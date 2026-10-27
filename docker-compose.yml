@@ -1,0 +1,11 @@
+services:
+  vitawa:
+    build: .
+    container_name: vitawa
+    restart: unless-stopped
+    ports:
+      - "8787:8787"
+    environment:
+      - PUBLIC_URL=${PUBLIC_URL}
+    volumes:
+      - ./data:/app/data
